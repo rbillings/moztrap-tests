@@ -6,6 +6,7 @@
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.keys import Keys
 
 from pages.base_page import MozTrapBasePage
 
@@ -28,6 +29,9 @@ class MozTrapManageCasesPage(MozTrapBasePage):
         find_element(*self._delect_case_locator).click()
 
     def filter_cases_by_name(self, name):
+        '''
+        Types the name into the input field and then clicks the item in the search suggestions
+        '''
         self.selenium.find_element(*self._filter_locator % {'filter_name': name.lower()})
         self.selenium.find_element(*self._filter_suggestion_locator % {'filter_name': name})
 
